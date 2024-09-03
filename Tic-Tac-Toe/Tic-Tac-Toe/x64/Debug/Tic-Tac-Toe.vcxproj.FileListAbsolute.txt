@@ -1,0 +1,3 @@
+C:\Users\Patri\Documents\Projects\tic-tac-toe\Tic-Tac-Toe\Tic-Tac-Toe\x64\Debug\Tic-Tac-Toe.vcxproj.AssemblyReference.cache
+C:\Users\Patri\Documents\Projects\tic-tac-toe\Tic-Tac-Toe\Tic-Tac-Toe\x64\Debug\TicTacToe.MyGame.resources
+C:\Users\Patri\Documents\Projects\tic-tac-toe\Tic-Tac-Toe\Tic-Tac-Toe\x64\Debug\Tic-Tac-Toe.vcxproj.GenerateResource.cache
