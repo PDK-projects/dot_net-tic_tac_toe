@@ -511,7 +511,7 @@ void MyGame::set_next_turn() {
     this->player_label->Text = players[current_turn].get_turn_name();
 }
 
-bool MyGame::is_valid_move(Label^ label_clicked) {
+bool MyGame::get_valid_move(Label^ label_clicked) {
         
     System::String^ label_value = label_clicked->Text;
 
@@ -571,7 +571,7 @@ void MyGame::position_Click(System::Object^ sender, System::EventArgs^ e) {
 
         String^ icon = current_player.get_icon();
 
-        bool is_valid_move = is_valid_move(label_clicked);
+        bool is_valid_move = get_valid_move(label_clicked);
 
         if (is_valid_move == true) {
             label_clicked->Text = icon;
@@ -605,13 +605,14 @@ void MyGame::position_Click(System::Object^ sender, System::EventArgs^ e) {
 void MyGame::button_mouse_hover(System::Object^ sender, System::EventArgs^ e) {
     ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyGame::typeid));
     Button^ button_clicked = safe_cast<Button^> (sender);
-    button_clicked->BackgroundImage = gcnew Bitmap("./images/button_hovered.png");
+
+    button_clicked->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject("button_hovered")));
 }
 
 void MyGame::button_mouse_down(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
     ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyGame::typeid));
     Button^ button_clicked = safe_cast<Button^> (sender);
-    button_clicked->BackgroundImage = gcnew Bitmap("./images/button_clicked.png");
+    button_clicked->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject("button_clicked")));
 }
 
 void MyGame::button_mouse_unset(System::Object^ sender) {
@@ -641,6 +642,8 @@ void MyGame::new_game_button_Click(System::Object^ sender, System::EventArgs^ e)
 }
 
 void MyGame::reset_button_Click(System::Object^ sender, System::EventArgs^ e) {
+
+    this->is_active_game = false;
 
     for (int i = 0; i < players.size(); i++) {
         players[i].reset_wins();

@@ -132,7 +132,7 @@ namespace TicTacToe {
 	/// </summary>
 	/// <param name="label_clicked">Label that has been clicked</param>
 	/// <returns>Whether move is valid</returns>
-	bool is_valid_move(Label^ label_clicked);
+	bool get_valid_move(Label^ label_clicked);
 
 	/// <summary>
 	/// Check if player wins 
