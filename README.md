@@ -3,6 +3,8 @@
 
 ## Overview
 
+Tic Tac Toe Game
+
 ## Technologies
 
 
@@ -10,3 +12,5 @@
     <img src = './readme_images/c++_icon.png' style="width:100px;height:100px;">
      <img src = './readme_images/dot-net_icon.png' style="width:100px;height:100px;">
 </div>
+
+
