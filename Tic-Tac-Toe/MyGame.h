@@ -123,6 +123,11 @@ namespace TicTacToe {
 	void update_message(String^ message);
 
 	/// <summary>
+	/// Sets the conditions for an inactive game
+	/// </summary>
+	void set_game_inactive();
+
+	/// <summary>
 	/// Set the next players turn
 	/// </summary>
 	void set_next_turn();
@@ -203,5 +208,9 @@ namespace TicTacToe {
 	/// <param name="e">Event</param>
 	System::Void reset_button_Click(System::Object^ sender, System::EventArgs^ e);
 
-	};
+
+
+private: System::Void title_label3_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+};
 }

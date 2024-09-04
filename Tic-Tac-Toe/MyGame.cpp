@@ -1,6 +1,7 @@
 #include "MyGame.h"
 #include <string>
 
+
 using namespace TicTacToe;
 
 MyGame::MyGame(std::array<Player, 2>& new_players) :players(new_players)   {
@@ -38,8 +39,8 @@ void MyGame::InitializeComponent(void)
     this->new_game_button = (gcnew System::Windows::Forms::Button());
     this->tableLayoutPanel3 = (gcnew System::Windows::Forms::TableLayoutPanel());
     this->dash_label_right = (gcnew System::Windows::Forms::Label());
-    this->player_label = (gcnew System::Windows::Forms::Label());
     this->dash_label_left = (gcnew System::Windows::Forms::Label());
+    this->player_label = (gcnew System::Windows::Forms::Label());
     this->tableLayoutPanel1->SuspendLayout();
     this->tableLayoutPanel2->SuspendLayout();
     this->tableLayoutPanel3->SuspendLayout();
@@ -59,11 +60,11 @@ void MyGame::InitializeComponent(void)
     this->tableLayoutPanel1->Controls->Add(this->position21, 1, 2);
     this->tableLayoutPanel1->Controls->Add(this->position20, 0, 2);
     this->tableLayoutPanel1->Controls->Add(this->position10, 0, 1);
-    this->tableLayoutPanel1->Controls->Add(this->position02, 2, 0);
-    this->tableLayoutPanel1->Controls->Add(this->position01, 1, 0);
     this->tableLayoutPanel1->Controls->Add(this->position00, 0, 0);
     this->tableLayoutPanel1->Controls->Add(this->position11, 1, 1);
     this->tableLayoutPanel1->Controls->Add(this->position12, 2, 1);
+    this->tableLayoutPanel1->Controls->Add(this->position02, 1, 0);
+    this->tableLayoutPanel1->Controls->Add(this->position01, 2, 0);
     this->tableLayoutPanel1->Location = System::Drawing::Point(32, 98);
     this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
     this->tableLayoutPanel1->RowCount = 3;
@@ -150,9 +151,9 @@ void MyGame::InitializeComponent(void)
     this->position02->Font = (gcnew System::Drawing::Font(L"Ink Free", 48.18461F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
         static_cast<System::Byte>(0)));
     this->position02->ForeColor = System::Drawing::Color::WhiteSmoke;
-    this->position02->Location = System::Drawing::Point(330, 0);
+    this->position02->Location = System::Drawing::Point(166, 0);
     this->position02->Name = L"position02";
-    this->position02->Size = System::Drawing::Size(159, 143);
+    this->position02->Size = System::Drawing::Size(158, 143);
     this->position02->TabIndex = 2;
     this->position02->Text = L"-";
     this->position02->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -167,9 +168,9 @@ void MyGame::InitializeComponent(void)
     this->position01->Font = (gcnew System::Drawing::Font(L"Ink Free", 48.18461F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
         static_cast<System::Byte>(0)));
     this->position01->ForeColor = System::Drawing::Color::WhiteSmoke;
-    this->position01->Location = System::Drawing::Point(166, 0);
+    this->position01->Location = System::Drawing::Point(330, 0);
     this->position01->Name = L"position01";
-    this->position01->Size = System::Drawing::Size(158, 143);
+    this->position01->Size = System::Drawing::Size(159, 143);
     this->position01->TabIndex = 1;
     this->position01->Text = L"-";
     this->position01->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -233,7 +234,7 @@ void MyGame::InitializeComponent(void)
     this->header->Font = (gcnew System::Drawing::Font(L"Bookman Old Style", 7.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
         static_cast<System::Byte>(0)));
     this->header->ForeColor = System::Drawing::Color::WhiteSmoke;
-    this->header->Location = System::Drawing::Point(592, 68);
+    this->header->Location = System::Drawing::Point(592, 40);
     this->header->Name = L"header";
     this->header->Size = System::Drawing::Size(136, 16);
     this->header->TabIndex = 1;
@@ -280,6 +281,7 @@ void MyGame::InitializeComponent(void)
     this->title_label3->Size = System::Drawing::Size(179, 75);
     this->title_label3->TabIndex = 4;
     this->title_label3->Text = L"Toe!";
+    this->title_label3->Click += gcnew System::EventHandler(this, &MyGame::title_label3_Click);
     // 
     // tableLayoutPanel2
     // 
@@ -293,7 +295,7 @@ void MyGame::InitializeComponent(void)
     this->tableLayoutPanel2->Controls->Add(this->score_value_x, 0, 1);
     this->tableLayoutPanel2->Controls->Add(this->score_label_o, 1, 0);
     this->tableLayoutPanel2->Controls->Add(this->score_label_x, 0, 0);
-    this->tableLayoutPanel2->Location = System::Drawing::Point(549, 173);
+    this->tableLayoutPanel2->Location = System::Drawing::Point(549, 116);
     this->tableLayoutPanel2->Name = L"tableLayoutPanel2";
     this->tableLayoutPanel2->RowCount = 2;
     this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 70)));
@@ -370,7 +372,7 @@ void MyGame::InitializeComponent(void)
     this->reset_button->FlatAppearance->MouseOverBackColor = System::Drawing::Color::Transparent;
     this->reset_button->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
     this->reset_button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"reset_button.Image")));
-    this->reset_button->Location = System::Drawing::Point(560, 448);
+    this->reset_button->Location = System::Drawing::Point(575, 436);
     this->reset_button->Margin = System::Windows::Forms::Padding(0);
     this->reset_button->Name = L"reset_button";
     this->reset_button->Size = System::Drawing::Size(55, 55);
@@ -391,7 +393,7 @@ void MyGame::InitializeComponent(void)
     this->new_game_button->FlatAppearance->MouseOverBackColor = System::Drawing::Color::Transparent;
     this->new_game_button->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
     this->new_game_button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"new_game_button.Image")));
-    this->new_game_button->Location = System::Drawing::Point(674, 448);
+    this->new_game_button->Location = System::Drawing::Point(673, 436);
     this->new_game_button->MaximumSize = System::Drawing::Size(55, 55);
     this->new_game_button->Name = L"new_game_button";
     this->new_game_button->Size = System::Drawing::Size(55, 55);
@@ -414,9 +416,9 @@ void MyGame::InitializeComponent(void)
     this->tableLayoutPanel3->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute,
         40)));
     this->tableLayoutPanel3->Controls->Add(this->dash_label_right, 2, 0);
-    this->tableLayoutPanel3->Controls->Add(this->player_label, 1, 0);
     this->tableLayoutPanel3->Controls->Add(this->dash_label_left, 0, 0);
-    this->tableLayoutPanel3->Location = System::Drawing::Point(549, 345);
+    this->tableLayoutPanel3->Controls->Add(this->player_label, 1, 0);
+    this->tableLayoutPanel3->Location = System::Drawing::Point(550, 308);
     this->tableLayoutPanel3->Name = L"tableLayoutPanel3";
     this->tableLayoutPanel3->RowCount = 1;
     this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 100)));
@@ -439,22 +441,6 @@ void MyGame::InitializeComponent(void)
     this->dash_label_right->Text = L"--";
     this->dash_label_right->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
     // 
-    // player_label
-    // 
-    this->player_label->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-        | System::Windows::Forms::AnchorStyles::Left)
-        | System::Windows::Forms::AnchorStyles::Right));
-    this->player_label->AutoSize = true;
-    this->player_label->Font = (gcnew System::Drawing::Font(L"Bookman Old Style", 7.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-        static_cast<System::Byte>(0)));
-    this->player_label->ForeColor = System::Drawing::Color::WhiteSmoke;
-    this->player_label->Location = System::Drawing::Point(43, 0);
-    this->player_label->Name = L"player_label";
-    this->player_label->Size = System::Drawing::Size(113, 38);
-    this->player_label->TabIndex = 1;
-    this->player_label->Text = L"-------";
-    this->player_label->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-    // 
     // dash_label_left
     // 
     this->dash_label_left->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
@@ -470,6 +456,22 @@ void MyGame::InitializeComponent(void)
     this->dash_label_left->TabIndex = 0;
     this->dash_label_left->Text = L"--";
     this->dash_label_left->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+    // 
+    // player_label
+    // 
+    this->player_label->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+        | System::Windows::Forms::AnchorStyles::Left)
+        | System::Windows::Forms::AnchorStyles::Right));
+    this->player_label->AutoSize = true;
+    this->player_label->Font = (gcnew System::Drawing::Font(L"Bookman Old Style", 7.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+        static_cast<System::Byte>(0)));
+    this->player_label->ForeColor = System::Drawing::Color::WhiteSmoke;
+    this->player_label->Location = System::Drawing::Point(43, 0);
+    this->player_label->Name = L"player_label";
+    this->player_label->Size = System::Drawing::Size(113, 38);
+    this->player_label->TabIndex = 1;
+    this->player_label->Text = L"-------";
+    this->player_label->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
     // 
     // MyGame
     // 
@@ -500,8 +502,15 @@ void MyGame::InitializeComponent(void)
 }
 
 void MyGame::update_message(String^ message) {
-
     this->header->Text = message;
+}
+
+void MyGame::set_game_inactive() {
+    is_active_game = false;
+
+    String^ reset_label_default = "-------";
+    this->player_label->Text = reset_label_default;
+
 }
 
 void MyGame::set_next_turn() {
@@ -567,6 +576,8 @@ void MyGame::position_Click(System::Object^ sender, System::EventArgs^ e) {
 
     if (is_active_game == true) {
 
+        this->update_message("");
+
         Label^ label_clicked = safe_cast<Label^> (sender);
 
         String^ icon = current_player.get_icon();
@@ -584,28 +595,22 @@ void MyGame::position_Click(System::Object^ sender, System::EventArgs^ e) {
                 
                 this->set_players_wins();
 
-             
-                is_active_game = false;
+                this->set_game_inactive();
 
             }
             else {
-
                 set_next_turn();
             }
-
         }
         else {
             update_message("Invalid Move");
-
         }
-
     }
 }
 
 void MyGame::button_mouse_hover(System::Object^ sender, System::EventArgs^ e) {
-    ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyGame::typeid));
+   ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyGame::typeid));
     Button^ button_clicked = safe_cast<Button^> (sender);
-
     button_clicked->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject("button_hovered")));
 }
 
@@ -639,11 +644,12 @@ void MyGame::new_game_button_Click(System::Object^ sender, System::EventArgs^ e)
     this->is_active_game = true;
     this->player_label->Text = players[current_turn].get_turn_name();
 
+    this->update_message("");
 }
 
 void MyGame::reset_button_Click(System::Object^ sender, System::EventArgs^ e) {
 
-    this->is_active_game = false;
+    this->set_game_inactive();
 
     for (int i = 0; i < players.size(); i++) {
         players[i].reset_wins();
